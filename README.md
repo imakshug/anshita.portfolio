@@ -1,12 +1,60 @@
-# React + Vite
+# Anshita Gupta Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, animated portfolio for MBA aspirant and marketing specialist Anshita Gupta, built with React 18, Vite, Tailwind CSS, Framer Motion, and Lucide React.
 
-Currently, two official plugins are available:
+## Features
+- Responsive design
+- Animated sections using Framer Motion
+- Tailwind CSS for rapid styling
+- Lucide React icons
+- Downloadable resume and profile image
+- Sections: Profile Summary, Academic Details, Skills, Experience, Projects, Certifications, Positions, Conferences, Volunteer Work, Contact
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+```
+├── public/
+│   ├── anshita copy.jpg
+│   ├── Anshita_Cv.pdf
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── tailwind.config.js
+├── postcss.config.cjs
+├── postcss.config.js
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## Customization
+- Update profile image and resume in `public/`
+- Edit section content in `src/components/`
+- Style with Tailwind classes in `App.css` and component files
+
+## Tech Stack
+- React 18
+- Vite
+- Tailwind CSS v4
+- Framer Motion
+- Lucide React
+
+## License
+MIT
