@@ -8,8 +8,23 @@ export default function ContactSection() {
         <Mail className="text-red-500" />
         <h2 className="text-2xl font-semibold">Contact</h2>
       </div>
-  <p>Email: <a href="mailto:anshitagupta2004@gmail.com" className="text-blue-600 underline">anshitagupta2004@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/anshita-gupta-b0839725a/" className="text-blue-600 underline">anshita-gupta-b0839725a</a></p>
-    </motion.section>
+   
+  <a
+    href="mailto:anshitagupta2004@gmail.com"
+    className="text-blue-600 underline"
+  >
+   Mail
+  </a>
+
+
+ <a
+    href="https://www.linkedin.com/in/anshita-gupta-b0839725a/"
+    className="text-blue-600 underline"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Linkedin
+  </a>
+ </motion.section>
   );
 }
