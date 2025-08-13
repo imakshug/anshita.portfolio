@@ -1,14 +1,28 @@
+
 # Anshita Gupta Portfolio
 
-A modern, animated portfolio for MBA aspirant and marketing specialist Anshita Gupta, built with React 18, Vite, Tailwind CSS, Framer Motion, and Lucide React.
+A modern, animated portfolio for MBA aspirant and marketing specialist Anshita Gupta, built with React 18, Vite, Tailwind CSS, Framer Motion, and React Icons.
 
 ## Features
-- Responsive design
-- Animated sections using Framer Motion
-- Tailwind CSS for rapid styling
-- Lucide React icons
-- Downloadable resume and profile image
-- Sections: Profile Summary, Academic Details, Skills, Experience, Projects, Certifications, Positions, Conferences, Volunteer Work, Contact
+- Responsive, mobile-first design
+- Animated sections and transitions (Framer Motion)
+- Tailwind CSS for rapid, theme-based styling
+- React Icons for beautiful iconography
+- Downloadable resume
+- All technical portfolio sections:
+  - Navbar (fixed, animated)
+  - Hero Section (gradient, profile card, CTA, scroll indicator)
+  - Profile Summary (two-column, icon cards)
+  - Academics (vertical timeline)
+  - Skills (chips/tags, icon grid)
+  - Experience (animated cards)
+  - Projects (masonry grid, modal popup)
+  - Certifications (badges, animation)
+  - Positions of Responsibility (vertical card list)
+  - Conferences & Workshops (carousel)
+  - Volunteer Work (image card, overlay)
+  - Contact (form, social icons)
+  - Footer
 
 ## Getting Started
 
@@ -26,35 +40,48 @@ A modern, animated portfolio for MBA aspirant and marketing specialist Anshita G
 ## Project Structure
 ```
 ├── public/
-│   ├── anshita copy.jpg
-│   ├── Anshita_Cv.pdf
+│   ├── profile.jpeg
+│   ├── Anshita_Gupta_Resume.pdf
 │   └── vite.svg
 ├── src/
 │   ├── assets/
 │   ├── components/
+│   │   ├── AcademicDetails.jsx
+│   │   ├── Academics.jsx
+│   │   ├── animatedsection.jsx
+│   │   ├── Certifications.jsx
+│   │   ├── Conferences.jsx
+│   │   ├── ContactSection.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Positions.jsx
+│   │   ├── ProfileSummary.jsx
+│   │   ├── ProjectsInternship.jsx
+│   │   ├── Skills.jsx
+│   │   ├── SkillsTechnical.jsx
+│   │   ├── VolunteerWork.jsx
 │   ├── App.jsx
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx
 ├── tailwind.config.js
-├── postcss.config.cjs
 ├── postcss.config.js
-├── package.json
 ├── vite.config.js
-└── README.md
+├── README.md
 ```
 
 ## Customization
 - Update profile image and resume in `public/`
 - Edit section content in `src/components/`
-- Style with Tailwind classes in `App.css` and component files
+- Style with Tailwind classes in component files
 
 ## Tech Stack
 - React 18
 - Vite
 - Tailwind CSS v4
 - Framer Motion
-- Lucide React
+- React Icons
 
 ## License
 MIT

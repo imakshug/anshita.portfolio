@@ -9,7 +9,7 @@ export default {
         olive: '#6C6E2D',
         blush: '#E7C4CB',
         rose: '#C67385',
-        gold: '#DBC57C',
+        gold: '#f4e8bfff',
         sky: '#97B2CF',
       },
     },
