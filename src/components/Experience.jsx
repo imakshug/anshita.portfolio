@@ -1,17 +1,61 @@
- 
-import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
 
 export default function Experience() {
+  const experiences = [
+    {
+      title: "Business Development and Market Research Intern",
+      company: "CultureX Entertainment Pvt. Ltd.",
+      period: "May 2025 - July 2025",
+      description: "Conducted large-scale market research on 3,000+ brands, led influencer marketing research and brand–influencer alignment, created competitor analysis decks in Canva, and optimized sales funnel reports. Managed data collation, industry classification, and campaign analytics using Apollo.io, Excel, and social media insights to support data-driven marketing strategies."
+    },
+    {
+      title: "Digital Marketing Intern",
+      company: "MOXSH Overseas Educon Limited",
+      period: "Feb 2024 - Apr 2024",
+      description: "Assisted in digital marketing campaigns and content creation."
+    },
+    {
+      title: "Accounting Intern", 
+      company: "Gupta Arora & Co",
+      period: "Aug 2023",
+      description: "Supported bookkeeping activities and tax filing processes."
+    }
+  ];
+
   return (
-    <motion.section className="bg-white rounded-xl shadow p-6" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-      <div className="flex items-center gap-3 mb-2">
-         </div>
-      <ul className="list-disc ml-6">
-        <li>Digital Marketing Intern, MOXSH Overseas Educon Limited (Feb 2024 - Apr 2024)</li>
-        <li>Accounting Intern, Gupta Arora & Co (Aug 2023)</li>
-        <li>Assisted in digital marketing campaigns, content creation, bookkeeping, and tax filing.</li>
-      </ul>
-    </motion.section>
+    <div className="experience-grid">
+      {/* First experience card - full width */}
+      <motion.div
+        key={experiences[0].title}
+        className="experience-card"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0 }}
+      >
+        <div className="experience-title">{experiences[0].title}</div>
+        <div className="experience-company">{experiences[0].company} • {experiences[0].period}</div>
+        <div className="experience-description">{experiences[0].description}</div>
+      </motion.div>
+
+      {/* Second row with two cards */}
+      <div className="experience-row">
+        {experiences.slice(1).map((exp, i) => (
+          <motion.div
+            key={exp.title}
+            className="experience-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 * (i + 1) }}
+          >
+            <div className="experience-title">{exp.title}</div>
+            <div className="experience-company">{exp.company} • {exp.period}</div>
+            <div className="experience-description">{exp.description}</div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 }

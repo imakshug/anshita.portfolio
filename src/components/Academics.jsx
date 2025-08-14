@@ -18,25 +18,21 @@ export default function Academics() {
   ];
 
   return (
-    <ol className="timeline">
-      {items.map((it, i) => (
-        <motion.li
-          key={it.degree}
-          className="timeline-item"
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+    <div className="academic-section">
+      {items.map((item, i) => (
+        <motion.div
+          key={item.degree}
+          className="academic-item"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 * i }}
         >
-          <div>
-            <p className="timeline-degree">{it.degree}</p>
-            <p className="timeline-inst">{it.inst}</p>
-            <p className="timeline-cgpa">
-              {it.cgpa} • {it.year}
-            </p>
-          </div>
-        </motion.li>
+          <div className="academic-degree">{item.degree}</div>
+          <div className="academic-inst">{item.inst}</div>
+          <div className="academic-cgpa">{item.cgpa} • {item.year}</div>
+        </motion.div>
       ))}
-    </ol>
+    </div>
   );
 }

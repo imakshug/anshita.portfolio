@@ -2,30 +2,38 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function Skills() {
-  const core = ["Creativity", "Decision Making", "Leadership", "Problem-Solving"];
-  const tech = ["Excel", "Tally ERP 9.0", "Microsoft Tools", "Power BI"];
+  const skills = [
+    "Creativity & Content ideation",
+    "Networking & Relationship Building",
+    "Excel", 
+    "Tally ERP 9.0", 
+    "Microsoft Tools", 
+    "Power BI",
+    "Social Media Marketing & Analytics", 
+    "Marketing Strategy", 
+    "Data Analysis", 
+    "Communication", 
+    "Market Research & Insights", 
+    "Event Planning & Management",
+    "Team Coordination",
+    "Social Media Campaign Management",
+    "Crisis Management During Events",
+    "Cross-Functional Collaboration",
+    "Competitor Analysis & Benchmarking",
+    "Photography & Event Coverage"
+  ];
 
   return (
-    <>
-      <h4 className="section-title" style={{ marginTop: 0 }}>Core Skills</h4>
-      <div>
-        {core.map((s) => (
-          <motion.span key={s} whileHover={{ scale: 1.06 }} className="chip">
-            {s}
-          </motion.span>
-        ))}
-      </div>
-
-      <h4 className="section-title" style={{ marginTop: "1.25rem" }}>
-        Technical Skills
-      </h4>
-      <div>
-        {tech.map((s) => (
-          <motion.span key={s} whileHover={{ scale: 1.06 }} className="chip">
-            {s}
-          </motion.span>
-        ))}
-      </div>
-    </>
+    <div className="skills-grid">
+      {skills.map((skill) => (
+        <motion.span 
+          key={skill} 
+          whileHover={{ scale: 1.06 }} 
+          className="skill-chip"
+        >
+          {skill}
+        </motion.span>
+      ))}
+    </div>
   );
 }

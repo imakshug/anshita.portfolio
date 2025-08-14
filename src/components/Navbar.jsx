@@ -1,67 +1,80 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-scroll";
+import { motion } from "framer-motion";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import "../App.css";
 
-export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("home");
+export default function Navbar({ sections, activeId }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const navItems = [
-    { id: "home", label: "Home" },
-    { id: "profile", label: "Profile" },
-    { id: "academics", label: "Academics" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
-  ];
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-  // Track scroll position for active link highlight
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map((item) =>
-        document.getElementById(item.id)
-      );
-      const scrollPos = window.scrollY + 120; // offset for navbar height
-
-      for (let section of sections) {
-        if (
-          section &&
-          section.offsetTop <= scrollPos &&
-          section.offsetTop + section.offsetHeight > scrollPos
-        ) {
-          setActiveSection(section.id);
-          break;
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-theme');
+  };
 
   return (
-    <nav className="navbar">
-      <div className="nav-left">
-        <span className="nav-logo">Anshita Gupta</span>
-        <span className="nav-sub">PGDM | Marketing & Finance</span>
-      </div>
+    <motion.nav 
+      className="navbar"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="navbar-content">
+        <motion.a 
+          href="#hero" 
+          className="navbar-brand"
+          whileHover={{ scale: 1.05 }}
+        >
+          Anshita
+        </motion.a>
 
-      <div className="nav-right">
-        {navItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.id}
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={-100}
-            className={`nav-link ${
-              activeSection === item.id ? "active" : ""
-            }`}
+        <div className={`navbar-nav ${isMenuOpen ? 'active' : ''}`}>
+          {sections.map((item) => (
+            <Link
+              key={item.id}
+              to={item.id}
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-100}
+              className={`navbar-link ${
+                activeId === item.id ? "active" : ""
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          
+          <motion.button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {item.label}
-          </Link>
-        ))}
+            {darkMode ? (
+              <SunIcon className="w-5 h-5" />
+            ) : (
+              <MoonIcon className="w-5 h-5" />
+            )}
+            {darkMode ? 'Light' : 'Dark'}
+          </motion.button>
+        </div>
+
+        {/* Mobile menu toggle button */}
+        <button 
+          className="mobile-menu-toggle"
+          onClick={toggleMenu}
+          style={{ display: 'none' }}
+        >
+          ☰
+        </button>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
