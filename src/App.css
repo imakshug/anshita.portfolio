@@ -652,45 +652,192 @@ html {
 /* Academic Styles */
 .academic-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  position: relative;
+  padding: 2rem 0;
 }
 
-.academic-item {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
+/* Background Particles */
+.academic-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.academic-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, var(--ocean-mid), var(--seafoam));
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.academic-particle:nth-child(1) { top: 10%; left: 15%; }
+.academic-particle:nth-child(2) { top: 20%; right: 20%; }
+.academic-particle:nth-child(3) { top: 60%; left: 10%; }
+.academic-particle:nth-child(4) { top: 80%; right: 15%; }
+.academic-particle:nth-child(5) { top: 30%; left: 60%; }
+.academic-particle:nth-child(6) { top: 70%; right: 40%; }
+.academic-particle:nth-child(7) { top: 40%; left: 80%; }
+.academic-particle:nth-child(8) { top: 90%; left: 40%; }
+
+/* Academic Cards */
+.academic-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(75, 181, 184, 0.2);
+  box-shadow: 0 10px 30px rgba(11, 79, 108, 0.1);
+  transition: all 0.4s ease;
+}
+
+.academic-card:hover {
+  box-shadow: 0 20px 50px rgba(11, 79, 108, 0.2);
+  border-color: var(--seafoam);
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  border-radius: 25px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Icon Container */
+.academic-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.academic-icon {
+  width: 3rem;
+  height: 3rem;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Content Styling */
+.academic-content {
   text-align: center;
-  border-left: 5px solid var(--rose);
-  transition: all 0.3s ease;
-}
-
-.academic-item:hover {
-  transform: translateY(-5px);
-  border-left-color: var(--olive);
 }
 
 .academic-degree {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--olive);
-  margin-bottom: 0.5rem;
+  color: var(--ocean-deep);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
 }
 
 .academic-inst {
-  color: #666;
+  color: var(--ocean-mid);
   margin-bottom: 1rem;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
-.academic-cgpa {
-  display: inline-block;
-  background: var(--rose);
+.academic-description {
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Footer with CGPA and Year */
+.academic-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.academic-cgpa,
+.academic-year {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(45deg, var(--ocean-mid), var(--seafoam));
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 20px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  flex: 1;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.academic-cgpa:hover,
+.academic-year:hover {
+  transform: scale(1.05);
+}
+
+.cgpa-icon,
+.year-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Decorative Elements */
+.academic-decoration-1,
+.academic-decoration-2 {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.academic-decoration-1 {
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, var(--coral), var(--seafoam));
+  opacity: 0.3;
+}
+
+.academic-decoration-2 {
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(45deg, var(--ocean-mid), var(--pearl));
+  opacity: 0.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .academic-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .academic-card {
+    padding: 2rem;
+  }
+  
+  .academic-footer {
+    flex-direction: column;
+  }
+  
+  .academic-cgpa,
+  .academic-year {
+    width: 100%;
+  }
 }
 
 /* Skills Styles */

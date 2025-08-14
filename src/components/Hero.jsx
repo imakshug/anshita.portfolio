@@ -78,7 +78,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <span>A Marketing Enthusiast and Finance Analyst with strong problem-solving skills.</span>
+          <span>A people-centric professional with strong negotiation, communication, and problem-solving skills. Adept at fostering collaboration, managing
+diverse perspectives, and driving meaningful outcomes.</span>
           <span>Passionate Team Leader creating positive workplace environments and organizational success.</span>
         </motion.div>
 
