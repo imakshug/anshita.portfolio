@@ -34,11 +34,6 @@ function App() {
       {/* Hero */}
       <Hero />
 
-      {/* Profile Summary */}
-      <AnimatedSection id="profile" title="Profile Summary" bg="#fff">
-        <ProfileSummary />
-      </AnimatedSection>
-
       {/* Academics */}
       <AnimatedSection id="academics" title="Academic Details" bg="#fbfbf9ff">
         <Academics />
