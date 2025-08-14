@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowDownTrayIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import profileImage from "/profile.jpeg";
 
 export default function Hero() {
   return (
@@ -41,7 +42,7 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
       >
         <motion.img
-          src="/profile.jpeg"
+          src={profileImage}
           alt="Anshita Gupta"
           className="hero-img"
           initial={{ opacity: 0, scale: 0.8 }}
