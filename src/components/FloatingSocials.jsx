@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaInstagram, FaUser } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 
 const FloatingSocials = () => {
@@ -26,10 +26,10 @@ const FloatingSocials = () => {
       color: "#E4405F"
     },
     {
-      icon: FaGithub,
-      url: "https://github.com/imakshug",
-      label: "GitHub",
-      color: "#333"
+      icon: FaUser,
+      url: "https://bento.me/anshita-gupta",
+      label: "Bento",
+      color: "#FF6B6B"
     }
   ];
 

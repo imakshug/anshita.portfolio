@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 export default function ProjectsInternship() {
   const projects = [
     {
+      title: "Aqualogica Content Calendar For April 2025",
+      description: "Created Trend-driven Instagram content strategy design using Canva",
+      tags: ["Trend Research", "Canva", "Content Planning"]
+    },
+    {
       title: "Marketing Strategy (4Ps)",
       description: "Brand positioning and digital campaigns with competitive analysis",
       tags: ["Marketing", "Strategy", "Analysis"]
@@ -18,11 +23,7 @@ export default function ProjectsInternship() {
       description: "Sales performance dashboard with data manipulation and visualization",
       tags: ["Power BI", "Analytics", "Visualization"]
     },
-    {
-      title: "Vyndo Khakhra Project",
-      description: "Product marketing and branding strategy development",
-      tags: ["Branding", "Product", "Marketing"]
-    },
+    
     {
       title: "Cost Feasibility Study",
       description: "Manufacturing unit analysis using NPV and IRR calculations",

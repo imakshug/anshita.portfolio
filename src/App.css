@@ -14,11 +14,13 @@
   --wave: rgba(11, 79, 108, 0.1); /* Wave Overlay */
   
   /* Improved Dark Theme Colors */
-  --dark-ocean: #0F1419;     /* Very Dark Blue */
-  --dark-teal: #1B2B3A;      /* Dark Teal Background */
-  --dark-surface: #243447;   /* Dark Surface */
-  --dark-text: #E8F4F8;      /* Light Text for Dark Mode */
-  --dark-accent: #64FFDA;    /* Bright Teal Accent */
+  --dark-ocean: #0A0E1A;     /* Very Dark Navy */
+  --dark-teal: #1A2332;      /* Dark Teal Background */
+  --dark-surface: #2D3748;   /* Dark Surface */
+  --dark-text: #F7FAFC;      /* Very Light Text */
+  --dark-accent: #4FD1C7;    /* Bright Teal Accent */
+  --dark-secondary: #63B3ED; /* Light Blue Secondary */
+  --dark-coral: #FF8A80;     /* Soft Coral for Dark Mode */
 }
 
 /* Theme Variables */
@@ -33,12 +35,105 @@ body {
 
 body.dark-theme {
   --primary: var(--dark-accent);
-  --secondary: var(--seafoam);
-  --accent: var(--coral);
+  --secondary: var(--dark-secondary);
+  --accent: var(--dark-coral);
   --background: var(--dark-ocean);
   --text: var(--dark-text);
-  --card-bg: rgba(36, 52, 71, 0.9);
-  background: linear-gradient(135deg, var(--dark-ocean) 0%, var(--dark-teal) 30%, var(--dark-surface) 60%, var(--dark-teal) 100%);
+  --card-bg: rgba(26, 35, 50, 0.95);
+  --pearl: rgba(26, 35, 50, 0.7); /* Override pearl for dark theme */
+  background: linear-gradient(135deg, var(--dark-ocean) 0%, var(--dark-teal) 25%, var(--dark-surface) 50%, var(--dark-teal) 75%, var(--dark-ocean) 100%);
+}
+
+/* Dark Theme Specific Overrides */
+.dark-theme .contact-form {
+  background: rgba(26, 35, 50, 0.9);
+  border: 1px solid rgba(79, 209, 199, 0.3);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(79, 209, 199, 0.2);
+}
+
+.dark-theme .success-message {
+  background: rgba(26, 35, 50, 0.9);
+  border: 1px solid rgba(79, 209, 199, 0.3);
+}
+
+.dark-theme .success-message h3 {
+  color: var(--dark-accent);
+}
+
+.dark-theme .loading-spinner {
+  border: 2px solid rgba(79, 209, 199, 0.3);
+  border-top: 2px solid var(--dark-accent);
+}
+
+.dark-theme .error-state {
+  background: rgba(26, 35, 50, 0.9);
+  border: 1px solid rgba(255, 138, 128, 0.3);
+}
+
+.dark-theme .card {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(79, 209, 199, 0.2);
+}
+
+.dark-theme .academic-card {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(79, 209, 199, 0.2);
+}
+
+.dark-theme .experience-card {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(79, 209, 199, 0.2);
+}
+
+.dark-theme .project-card {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(79, 209, 199, 0.2);
+}
+
+/* Additional Dark Theme Overrides */
+.dark-theme .card {
+  background: rgba(26, 35, 50, 0.8) !important;
+  border: 1px solid rgba(79, 209, 199, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .navbar-nav {
+  background: rgba(10, 14, 26, 0.95) !important;
+  border-top: 1px solid rgba(79, 209, 199, 0.2);
+}
+
+.dark-theme .footer {
+  background: rgba(10, 14, 26, 0.9);
+}
+
+.dark-theme .footer-content h3,
+.dark-theme .footer-content p {
+  color: var(--dark-text);
+}
+
+.dark-theme .footer-bottom p {
+  color: var(--dark-text);
+  opacity: 0.8;
+}
+
+/* Section Background Overrides for Dark Theme */
+.dark-theme #academics,
+.dark-theme #experience,
+.dark-theme #contact {
+  background: rgba(26, 35, 50, 0.7) !important;
+}
+
+.dark-theme #skills,
+.dark-theme #projects {
+  background: rgba(19, 27, 40, 0.8) !important;
+}
+
+.dark-theme .footer-social-link.bento:hover {
+  border-color: #FF8A80;
+  color: #FF8A80;
+  box-shadow: 0 8px 25px rgba(255, 138, 128, 0.3);
 }
 
 /* Base Styles */
@@ -100,6 +195,11 @@ body::before {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Add variety to particle colors */
+.particle:nth-child(3n) { background: var(--ocean-light); }
+.particle:nth-child(4n) { background: var(--coral); opacity: 0.3; }
+.particle:nth-child(5n) { background: var(--ocean-mid); animation-duration: 8s; }
+
 .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
 .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
 .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
@@ -109,6 +209,17 @@ body::before {
 .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 6s; }
 .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 7s; }
 .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 8s; }
+.particle:nth-child(10) { width: 7px; height: 7px; left: 15%; animation-delay: 9s; }
+.particle:nth-child(11) { width: 3px; height: 3px; left: 25%; animation-delay: 10s; }
+.particle:nth-child(12) { width: 5px; height: 5px; left: 35%; animation-delay: 11s; }
+.particle:nth-child(13) { width: 4px; height: 4px; left: 45%; animation-delay: 12s; }
+.particle:nth-child(14) { width: 6px; height: 6px; left: 65%; animation-delay: 13s; }
+.particle:nth-child(15) { width: 3px; height: 3px; left: 85%; animation-delay: 14s; }
+
+/* Additional animation variations */
+.particle:nth-child(2n) { animation-duration: 7s; }
+.particle:nth-child(7n) { animation-duration: 9s; }
+.particle:nth-child(11n) { animation-duration: 5s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
@@ -250,9 +361,9 @@ html {
 }
 
 .dark-theme .navbar {
-  background: rgba(15, 20, 25, 0.95);
+  background: rgba(10, 14, 26, 0.95);
   border-bottom: 1px solid var(--dark-surface);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
 .navbar-content {
@@ -364,7 +475,7 @@ html {
 }
 
 .dark-theme .hero {
-  background: linear-gradient(135deg, var(--dark-ocean) 0%, var(--dark-teal) 50%, var(--dark-surface) 100%);
+  background: linear-gradient(135deg, var(--dark-ocean) 0%, var(--dark-teal) 40%, var(--dark-surface) 80%, var(--dark-teal) 100%);
 }
 
 .hero-decorations {
@@ -1418,6 +1529,12 @@ html {
   color: var(--seafoam);
 }
 
+.footer-social-link.bento:hover {
+  border-color: #FF6B6B;
+  color: #FF6B6B;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 2rem;
@@ -1491,4 +1608,89 @@ html {
   .mobile-menu-toggle {
     display: block !important;
   }
+}
+
+/* Contact Form Error State Styles */
+.error-state {
+  text-align: center;
+  padding: 3rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 140, 148, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-state::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 140, 148, 0.1) 0%, 
+    rgba(255, 140, 148, 0.05) 100%);
+  pointer-events: none;
+}
+
+.error-state-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--coral);
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(255, 140, 148, 0.3));
+}
+
+.error-state h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.error-state p {
+  color: var(--text);
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.retry-button {
+  background: linear-gradient(45deg, var(--coral), #ff6b74);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.retry-button:hover {
+  box-shadow: 0 8px 25px rgba(255, 140, 148, 0.4);
+  transform: translateY(-2px);
+}
+
+.retry-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.retry-button:hover::before {
+  left: 100%;
 }

@@ -43,16 +43,42 @@ const ContactForm = () => {
     
     setStatus('loading');
     
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      // Using Formspree - replace with your actual Formspree endpoint
+      const response = await fetch('https://formspree.io/f/xeoqkqrg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `Portfolio Contact from ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        
+        // Reset status after showing success
+        setTimeout(() => {
+          setStatus('idle');
+        }, 4000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
       
-      // Reset status after showing success
+      // Reset status after showing error
       setTimeout(() => {
         setStatus('idle');
-      }, 3000);
-    }, 2000);
+      }, 4000);
+    }
   };
 
   const handleChange = (e) => {
@@ -118,6 +144,32 @@ const ContactForm = () => {
                 />
               ))}
             </div>
+          </motion.div>
+        ) : status === 'error' ? (
+          <motion.div
+            key="error"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: -20 }}
+            className="error-message"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            >
+              <ExclamationTriangleIcon className="error-icon" />
+            </motion.div>
+            <h3>Message Failed to Send</h3>
+            <p>Sorry, there was an error sending your message. Please try again or contact me directly.</p>
+            <motion.button
+              className="retry-button"
+              onClick={() => setStatus('idle')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Try Again
+            </motion.button>
           </motion.div>
         ) : (
           <motion.form

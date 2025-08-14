@@ -11,7 +11,7 @@ import ContactForm from "./components/ContactForm";
 import LoadingScreen from "./components/LoadingScreen";
 import FloatingSocials from "./components/FloatingSocials";
 import useScrollSpy from "./hooks/useScrollSpy";
-import { FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaInstagram, FaUser } from "react-icons/fa";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +22,7 @@ function App() {
     { id: "academics", label: "Academics" },
     { id: "skills", label: "Skills" },
     { id: "experience", label: "Experience" },
-    { id: "projects", label: "Work" },
+    { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
   const activeId = useScrollSpy(sections.map((s) => s.id));
@@ -51,7 +51,7 @@ function App() {
         <>
           {/* Floating particles background */}
           <div className="floating-particles">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(15)].map((_, i) => (
               <div key={i} className="particle" />
             ))}
           </div>
@@ -77,8 +77,8 @@ function App() {
             <Experience />
           </AnimatedSection>
 
-          {/* Projects & Internship */}
-          <AnimatedSection id="projects" title="Projects & Internship" bg="rgba(248, 253, 253, 0.8)">
+          {/* Projects */}
+          <AnimatedSection id="projects" title="Projects" bg="rgba(248, 253, 253, 0.8)">
             <ProjectsInternship />
           </AnimatedSection>
 
@@ -123,6 +123,15 @@ function App() {
                     whileHover={{ scale: 1.1, y: -3 }}
                   >
                     <FaInstagram />
+                  </motion.a>
+                  <motion.a
+                    href="https://bento.me/anshita-gupta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-link bento"
+                    whileHover={{ scale: 1.1, y: -3 }}
+                  >
+                    <FaUser />
                   </motion.a>
                 </div>
               </div>
