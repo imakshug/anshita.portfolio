@@ -25,9 +25,9 @@ export default function ProjectsInternship() {
     },
     
     {
-      title: "Cost Feasibility Study",
-      description: "Manufacturing unit analysis using NPV and IRR calculations",
-      tags: ["Finance", "Analysis", "Manufacturing"]
+      title: "Financial Statement Analysis",
+      description: "Analyzed financial statements by evaluating liquidity, profitability, and leverage ratios to assess overall financial health and performance.",
+      tags: ["Financial Analysis", "Performance Evaluation", "Trend Analysis"]
     },
     {
       title: "Supermarket Operations",

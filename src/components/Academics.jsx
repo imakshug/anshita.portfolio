@@ -7,7 +7,7 @@ export default function Academics() {
     {
       degree: "PGDM (Marketing & Finance)",
       inst: "Narayana Business School (AICTE)",
-      cgpa: "7.31 CGPA",
+      cgpa: "7.7 CGPA",
       year: "2026",
       icon: AcademicCapIcon,
       color: "var(--ocean-mid)",

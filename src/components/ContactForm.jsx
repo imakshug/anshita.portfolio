@@ -44,21 +44,24 @@ const ContactForm = () => {
     setStatus('loading');
     
     try {
-      // Using Formspree - replace with your actual Formspree endpoint
-      const response = await fetch('https://formspree.io/f/xeoqkqrg', {
+      // Using Formspree with form data format (recommended approach)
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('_replyto', formData.email);
+      formDataToSend.append('_subject', `Portfolio Contact from ${formData.name}`);
+      
+      const response = await fetch('https://formspree.io/f/xeozdglq', {
         method: 'POST',
+        body: formDataToSend,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _replyto: formData.email,
-          _subject: `Portfolio Contact from ${formData.name}`,
-        }),
+          'Accept': 'application/json'
+        }
       });
 
+      const result = await response.json();
+      
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
@@ -68,7 +71,8 @@ const ContactForm = () => {
           setStatus('idle');
         }, 4000);
       } else {
-        throw new Error('Failed to send message');
+        console.error('Formspree error:', result);
+        throw new Error(result.error || 'Failed to send message');
       }
     } catch (error) {
       console.error('Error sending message:', error);
