@@ -28,10 +28,10 @@ function App() {
   const activeId = useScrollSpy(sections.map((s) => s.id));
 
   useEffect(() => {
-    // Reduce loading time
+    // Set loading time to 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
