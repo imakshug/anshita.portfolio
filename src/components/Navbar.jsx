@@ -56,13 +56,13 @@ export default function Navbar({ sections, activeId }) {
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             {darkMode ? (
-              <SunIcon className="w-5 h-5" />
+              <SunIcon className="w-6 h-6" />
             ) : (
-              <MoonIcon className="w-5 h-5" />
+              <MoonIcon className="w-6 h-6" />
             )}
-            {darkMode ? 'Light' : 'Dark'}
           </motion.button>
         </div>
 

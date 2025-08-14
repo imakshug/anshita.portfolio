@@ -289,6 +289,18 @@ html {
 .loading-content {
   text-align: center;
   z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .loading-logo-container {
@@ -299,6 +311,21 @@ html {
   min-height: 280px;
   position: relative;
   z-index: 10;
+  animation: logoEntry 1.2s ease-out 0.3s both;
+}
+
+@keyframes logoEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .loading-logo {
@@ -306,8 +333,18 @@ html {
   height: 280px;
   object-fit: contain;
   filter: drop-shadow(0 0 50px rgba(178, 229, 229, 0.9));
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
   background: transparent;
+  animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% {
+    filter: drop-shadow(0 0 30px rgba(178, 229, 229, 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 60px rgba(178, 229, 229, 1)) drop-shadow(0 0 100px rgba(75, 181, 184, 0.5));
+  }
 }
 
 .loading-logo-fallback {
@@ -322,6 +359,12 @@ html {
   background: linear-gradient(45deg, var(--ocean-deep), var(--ocean-mid));
   border-radius: 50%;
   filter: drop-shadow(0 0 50px rgba(178, 229, 229, 0.9));
+  animation: logoGlow 2s ease-in-out infinite alternate, logoRotate 4s linear infinite;
+}
+
+@keyframes logoRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .loading-logo:hover {
@@ -338,6 +381,18 @@ html {
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
   z-index: 10;
   position: relative;
+  animation: textSlideIn 1s ease-out 0.6s both;
+}
+
+@keyframes textSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .loading-progress {
@@ -346,6 +401,46 @@ html {
   border-radius: 2px;
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(178, 229, 229, 0.6);
+  animation: progressSlideIn 1s ease-out 0.9s both, progressPulse 2s ease-in-out 1.9s infinite;
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progressShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes progressSlideIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(178, 229, 229, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(178, 229, 229, 0.9), 0 0 40px rgba(75, 181, 184, 0.6);
+  }
+}
+
+@keyframes progressShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 .loading-particles {
@@ -355,6 +450,18 @@ html {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  animation: particlesEntry 1.5s ease-out 1.2s both;
+}
+
+@keyframes particlesEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .loading-particle {
@@ -364,6 +471,25 @@ html {
   background: var(--seafoam);
   border-radius: 50%;
   box-shadow: 0 0 10px var(--seafoam);
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.loading-particle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.loading-particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
+.loading-particle:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
+.loading-particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 1.5s; }
+.loading-particle:nth-child(5) { top: 40%; left: 85%; animation-delay: 2s; }
+.loading-particle:nth-child(6) { top: 70%; left: 30%; animation-delay: 2.5s; }
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
 }
 
 /* Navbar Styles */
@@ -455,15 +581,17 @@ html {
 .theme-toggle {
   background: linear-gradient(45deg, var(--ocean-mid), var(--seafoam));
   border: none;
-  border-radius: 25px;
-  padding: 8px 16px;
+  border-radius: 50%;
+  padding: 10px;
   color: white;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   margin-left: 1rem;
 }
 
@@ -657,6 +785,10 @@ html {
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 3rem;
+}
+
+.hero-buttons a {
+  text-decoration: none;
 }
 
 .hero-btn {
@@ -972,6 +1104,42 @@ html {
 }
 
 /* Skills Styles */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skills-category-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--ocean-deep), var(--ocean-mid));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.skills-category-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(45deg, var(--ocean-mid), var(--seafoam));
+  border-radius: 2px;
+}
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -980,16 +1148,28 @@ html {
 }
 
 .skill-chip {
-  background: linear-gradient(45deg, var(--ocean-mid), var(--seafoam));
+  background: linear-gradient(45deg, var(--ocean-deep), var(--ocean-mid));
   color: white;
   padding: 0.8rem 1.5rem;
-  border-radius: 25px;
+  border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: none;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(11, 79, 108, 0.3);
+}
+
+.skill-chip.technical {
+  background: linear-gradient(45deg, var(--ocean-deep), var(--ocean-mid));
+}
+
+.skill-chip.soft {
+  background: linear-gradient(45deg, var(--seafoam), var(--ocean-light));
+  color: var(--ocean-deep);
+  box-shadow: 0 8px 25px rgba(75, 181, 184, 0.3);
 }
 
 .skill-chip::before {
@@ -999,8 +1179,12 @@ html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s ease;
+}
+
+.skill-chip.soft::before {
+  background: linear-gradient(90deg, transparent, rgba(11, 79, 108, 0.1), transparent);
 }
 
 .skill-chip:hover::before {
@@ -1008,9 +1192,22 @@ html {
 }
 
 .skill-chip:hover {
-  background: linear-gradient(45deg, var(--coral), var(--ocean-light));
+  box-shadow: 0 12px 35px rgba(11, 79, 108, 0.4);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(11, 79, 108, 0.3);
+}
+
+.skill-chip.soft:hover {
+  box-shadow: 0 12px 35px rgba(75, 181, 184, 0.4);
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    gap: 2rem;
+  }
+  
+  .skills-category-title {
+    font-size: 1.5rem;
+  }
 }
 
 /* Experience Styles */
