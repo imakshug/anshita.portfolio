@@ -21,13 +21,13 @@ const FloatingSocials = () => {
     },
     {
       icon: FaInstagram,
-      url: "https://www.instagram.com/yourusername",
+      url: "https://www.instagram.com/anshiita.g/",
       label: "Instagram",
       color: "#E4405F"
     },
     {
       icon: FaGithub,
-      url: "#",
+      url: "https://github.com/imakshug",
       label: "GitHub",
       color: "#333"
     }
