@@ -116,7 +116,7 @@ function App() {
                     <FaLinkedin />
                   </motion.a>
                   <motion.a
-                    href="https://www.instagram.com/yourusername"
+                    href="https://www.instagram.com/anshiita.g/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="footer-social-link"
