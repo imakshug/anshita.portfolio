@@ -1,7 +1,7 @@
 
 # 🌊 Anshita Gupta Portfolio
 
-A stunning ortfolio for MBA aspirant and marketing specialist Anshita Gupta. Features modern animations, enhanced UX, and a professional presentation of her academic achievements and work experience.
+A stunning portfolio for marketing specialist Anshita Gupta. Features modern animations, enhanced UX, and a professional presentation of her academic achievements and work experience.
 
 ## ✨ Features
 
