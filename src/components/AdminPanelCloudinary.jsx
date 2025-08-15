@@ -240,7 +240,12 @@ export default function AdminPanelCloudinary({ onClose }) {
                 )}
 
                 {uploadedImages.length > 0 && (
-                  <div className="uploaded-images">
+                  <motion.div 
+                    className="uploaded-images"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <h4>✅ Successfully Uploaded to Cloudinary ({uploadedImages.length} images)</h4>
                     <div className="uploaded-grid">
                       {uploadedImages.map((photo, index) => (
@@ -251,20 +256,30 @@ export default function AdminPanelCloudinary({ onClose }) {
                       ))}
                     </div>
                     
-                    <div className="download-section">
-                      <button 
-                        onClick={downloadUpdatedPhotosJson}
-                        className="download-btn primary"
-                      >
-                        <CloudArrowUpIcon className="w-4 h-4" />
-                        Download Updated photos.json
-                      </button>
-                      <p className="text-sm text-gray-600 mt-2">
-                        This file contains your existing photos plus the newly uploaded ones with Cloudinary URLs. 
-                        Upload this to your GitHub repository's <code>public/gallery/</code> folder.
-                      </p>
-                    </div>
-                  </div>
+                    <motion.div 
+                      className="download-section"
+                      initial={{ scale: 0.95, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.2, duration: 0.3 }}
+                    >
+                      <div className="download-highlight">
+                        <h3 className="download-title">📥 Ready to Download!</h3>
+                        <button 
+                          onClick={downloadUpdatedPhotosJson}
+                          className="download-btn primary pulse"
+                        >
+                          <CloudArrowUpIcon className="w-5 h-5" />
+                          Download Updated photos.json
+                        </button>
+                        <p className="download-instructions">
+                          📋 <strong>Next Steps:</strong><br />
+                          1. Save this file to your computer<br />
+                          2. Upload to GitHub at <code>public/gallery/photos.json</code><br />
+                          3. Your website will update automatically! 🚀
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 )}
               </div>
             </div>

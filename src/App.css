@@ -4224,34 +4224,79 @@ html {
 }
 
 .download-section {
-  background: var(--pearl);
-  border-radius: 12px;
-  padding: 20px;
+  background: linear-gradient(135deg, var(--pearl) 0%, rgba(75, 181, 184, 0.05) 100%);
+  border: 2px solid var(--ocean-accent);
+  border-radius: 16px;
+  padding: 24px;
   text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 4px 20px rgba(75, 181, 184, 0.15);
+}
+
+.download-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.download-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ocean-primary);
+  margin: 0;
 }
 
 .download-btn.primary {
   background: linear-gradient(135deg, var(--ocean-primary), var(--ocean-accent));
   color: white;
   border: none;
-  padding: 14px 24px;
-  border-radius: 10px;
-  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(75, 181, 184, 0.3);
+}
+
+.download-btn.primary.pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(75, 181, 184, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(75, 181, 184, 0.5);
+    transform: scale(1.02);
+  }
 }
 
 .download-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(75, 181, 184, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(75, 181, 184, 0.5);
 }
 
 .download-btn.primary:active {
-  transform: translateY(0);
+  transform: translateY(-1px) scale(1);
+}
+
+.download-instructions {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: left;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 16px;
+  border-radius: 10px;
+  border-left: 4px solid var(--ocean-accent);
+  max-width: 400px;
+  line-height: 1.5;
 }
 
 /* Dark Theme Overrides for Firebase Upload */
@@ -4276,7 +4321,19 @@ body.dark-theme .uploaded-item {
 }
 
 body.dark-theme .download-section {
-  background: var(--dark-surface);
+  background: linear-gradient(135deg, var(--dark-surface) 0%, rgba(75, 181, 184, 0.1) 100%);
+  border-color: var(--dark-accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .download-title {
+  color: var(--dark-accent);
+}
+
+body.dark-theme .download-instructions {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--dark-text);
+  border-left-color: var(--dark-accent);
 }
 
 body.dark-theme .error-message {
