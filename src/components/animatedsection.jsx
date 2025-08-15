@@ -13,8 +13,10 @@ export default function AnimatedSection({ id, title, children, bg = "white" }) {
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      {title ? <h3 className="section-title">{title}</h3> : null}
-      {children}
+      <div className="section-content">
+        {title ? <h3 className="section-title">{title}</h3> : null}
+        {children}
+      </div>
     </motion.section>
   );
 }

@@ -10,11 +10,14 @@ import ProjectsInternship from "./components/ProjectsInternship";
 import ContactForm from "./components/ContactForm";
 import LoadingScreen from "./components/LoadingScreen";
 import FloatingSocials from "./components/FloatingSocials";
+import Gallery from "./components/Gallery";
 import useScrollSpy from "./hooks/useScrollSpy";
 import { FaLinkedin, FaEnvelope, FaInstagram, FaUser } from "react-icons/fa";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState('portfolio'); // 'portfolio' or 'gallery'
+  const [showAdmin, setShowAdmin] = useState(false); // Admin panel state for gallery
 
   // sections in order (used by Navbar + scroll spy)
   const sections = [
@@ -56,91 +59,109 @@ function App() {
             ))}
           </div>
 
-          {/* Navbar with scroll spy */}
-          <Navbar sections={sections} activeId={activeId} />
+          {/* Navbar with scroll spy and page navigation */}
+          <Navbar 
+            sections={sections} 
+            activeId={activeId} 
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            showAdmin={showAdmin}
+            setShowAdmin={setShowAdmin}
+          />
 
-          {/* Hero */}
-          <Hero />
+          {/* Conditional rendering based on current page */}
+          {currentPage === 'portfolio' ? (
+            <>
+              {/* Hero */}
+              <Hero />
 
-          {/* Academics */}
-          <AnimatedSection id="academics" title="Academic Details" bg="var(--pearl)">
-            <Academics />
-          </AnimatedSection>
+              {/* Academics */}
+              <AnimatedSection id="academics" title="Academic Details" bg="var(--pearl)">
+                <Academics />
+              </AnimatedSection>
 
-          {/* Skills */}
-          <AnimatedSection id="skills" title="Skills" bg="rgba(248, 253, 253, 0.8)">
-            <Skills />
-          </AnimatedSection>
+              {/* Skills */}
+              <AnimatedSection id="skills" title="Skills" bg="rgba(248, 253, 253, 0.8)">
+                <Skills />
+              </AnimatedSection>
 
-          {/* Experience */}
-          <AnimatedSection id="experience" title="Experience" bg="var(--pearl)">
-            <Experience />
-          </AnimatedSection>
+              {/* Experience */}
+              <AnimatedSection id="experience" title="Experience" bg="var(--pearl)">
+                <Experience />
+              </AnimatedSection>
 
-          {/* Projects */}
-          <AnimatedSection id="projects" title="Projects" bg="rgba(248, 253, 253, 0.8)">
-            <ProjectsInternship />
-          </AnimatedSection>
+              {/* Projects */}
+              <AnimatedSection id="projects" title="Projects" bg="rgba(248, 253, 253, 0.8)">
+                <ProjectsInternship />
+              </AnimatedSection>
 
-          {/* Contact */}
-          <AnimatedSection id="contact" title="Get In Touch" bg="var(--pearl)">
-            <ContactForm />
-          </AnimatedSection>
+              {/* Contact */}
+              <AnimatedSection id="contact" title="Get In Touch" bg="var(--pearl)">
+                <ContactForm />
+              </AnimatedSection>
 
-          {/* Enhanced Footer */}
-          <footer className="footer">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="footer-content">
-                <h3>Let's Connect</h3>
-                <p>Feel free to reach out for collaborations or just a friendly hello!</p>
-                
-                <div className="footer-socials">
-                  <motion.a 
-                    href="mailto:anshitagupta2004@gmail.com" 
-                    className="footer-social-link"
-                    whileHover={{ scale: 1.1, y: -3 }}
-                  >
-                    <FaEnvelope />
-                  </motion.a>
-                  <motion.a
-                    href="https://www.linkedin.com/in/anshita-gupta-b0839725a/"
-                    className="footer-social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -3 }}
-                  >
-                    <FaLinkedin />
-                  </motion.a>
-                  <motion.a
-                    href="https://www.instagram.com/anshiita.g/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="footer-social-link"
-                    whileHover={{ scale: 1.1, y: -3 }}
-                  >
-                    <FaInstagram />
-                  </motion.a>
-                  <motion.a
-                    href="https://bento.me/anshita-gupta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="footer-social-link bento"
-                    whileHover={{ scale: 1.1, y: -3 }}
-                  >
-                    <FaUser />
-                  </motion.a>
-                </div>
-              </div>
-              
-              <div className="footer-bottom">
-                <p>© {new Date().getFullYear()} Anshita Gupta. Made with 💙 for my amazing sister!</p>
-              </div>
-            </motion.div>
-          </footer>
+              {/* Enhanced Footer */}
+              <footer className="footer">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="footer-content">
+                    <h3>Let's Connect</h3>
+                    <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+                    
+                    <div className="footer-socials">
+                      <motion.a 
+                        href="mailto:anshitagupta2004@gmail.com" 
+                        className="footer-social-link"
+                        whileHover={{ scale: 1.1, y: -3 }}
+                      >
+                        <FaEnvelope />
+                      </motion.a>
+                      <motion.a
+                        href="https://www.linkedin.com/in/anshita-gupta-b0839725a/"
+                        className="footer-social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1, y: -3 }}
+                      >
+                        <FaLinkedin />
+                      </motion.a>
+                      <motion.a
+                        href="https://www.instagram.com/anshiita.g/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-social-link"
+                        whileHover={{ scale: 1.1, y: -3 }}
+                      >
+                        <FaInstagram />
+                      </motion.a>
+                      <motion.a
+                        href="https://bento.me/anshita-gupta"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-social-link bento"
+                        whileHover={{ scale: 1.1, y: -3 }}
+                      >
+                        <FaUser />
+                      </motion.a>
+                    </div>
+                  </div>
+                  
+                  <div className="footer-bottom">
+                    <p>© {new Date().getFullYear()} Anshita Gupta. Made with 💙 for my amazing sister!</p>
+                  </div>
+                </motion.div>
+              </footer>
+            </>
+          ) : (
+            /* Gallery Page */
+            <Gallery 
+              showAdmin={showAdmin}
+              setShowAdmin={setShowAdmin}
+            />
+          )}
 
           {/* Floating Social Media */}
           <FloatingSocials />

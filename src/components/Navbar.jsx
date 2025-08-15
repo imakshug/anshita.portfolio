@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { SunIcon, MoonIcon, CameraIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 import "../App.css";
 
-export default function Navbar({ sections, activeId }) {
+export default function Navbar({ 
+  sections, 
+  activeId, 
+  currentPage, 
+  setCurrentPage, 
+  showAdmin, 
+  setShowAdmin 
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -17,6 +24,11 @@ export default function Navbar({ sections, activeId }) {
     document.body.classList.toggle('dark-theme');
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setIsMenuOpen(false);
+  };
+
   return (
     <motion.nav 
       className="navbar"
@@ -25,16 +37,18 @@ export default function Navbar({ sections, activeId }) {
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-content">
-        <motion.a 
-          href="#hero" 
+        <motion.button 
           className="navbar-brand"
+          onClick={() => handlePageChange('portfolio')}
           whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Anshita
-        </motion.a>
+        </motion.button>
 
         <div className={`navbar-nav ${isMenuOpen ? 'active' : ''}`}>
-          {sections.map((item) => (
+          {/* Portfolio Section Links (only show when on portfolio page) */}
+          {currentPage === 'portfolio' && sections.map((item) => (
             <Link
               key={item.id}
               to={item.id}
@@ -50,6 +64,32 @@ export default function Navbar({ sections, activeId }) {
               {item.label}
             </Link>
           ))}
+
+          {/* Page Navigation Buttons */}
+          <motion.button
+            className={`navbar-page-btn ${currentPage === 'gallery' ? 'active' : ''}`}
+            onClick={() => handlePageChange('gallery')}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <CameraIcon className="page-btn-icon" />
+            <span>Gallery</span>
+          </motion.button>
+
+          {/* Admin Panel Toggle (only show on gallery page) */}
+          {currentPage === 'gallery' && (
+            <motion.button
+              className={`navbar-admin-btn ${showAdmin ? 'active' : ''}`}
+              onClick={() => setShowAdmin(!showAdmin)}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              title={showAdmin ? 'Close Admin Panel' : 'Open Admin Panel'}
+            >
+              <Cog6ToothIcon className="admin-btn-icon" />
+              <span>Admin</span>
+              {!showAdmin && <div className="admin-notification-badge" />}
+            </motion.button>
+          )}
           
           <motion.button
             className="theme-toggle"

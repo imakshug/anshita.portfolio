@@ -1,0 +1,44 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "title": "Golden Hour Portrait",
+      "category": "portrait",
+      "imageUrl": "/gallery/sample1.jpg",
+      "tags": ["portrait", "golden hour", "natural light"],
+      "description": "Beautiful natural light portrait during golden hour",
+      "likes": 45,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Urban Architecture",
+      "category": "street",
+      "imageUrl": "/gallery/sample2.jpg",
+      "tags": ["architecture", "urban", "black and white"],
+      "description": "Modern architectural details in monochrome",
+      "likes": 32,
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Wedding Ceremony",
+      "category": "wedding",
+      "imageUrl": "/gallery/sample3.jpg",
+      "tags": ["wedding", "ceremony", "candid"],
+      "description": "Emotional moment during wedding ceremony",
+      "likes": 78,
+      "featured": true
+    },
+  {
+      "id": 4,
+      "title": "Mountain Landscape",
+      "category": "landscape",
+      "imageUrl": "https://res.cloudinary.com/durbx4l8y/image/upload/v1755241937/gallery/1755241933549_GeupBwBbMAAkrAr.jpg",
+      "tags": ["mountains", "landscape", "nature", "cloudinary"],
+      "description": "Beautiful mountain landscape uploaded via Cloudinary CDN",
+      "likes": 25,
+      "featured": true
+    }
+  ]
+}
